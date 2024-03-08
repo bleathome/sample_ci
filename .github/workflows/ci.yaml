@@ -20,5 +20,5 @@ jobs:
         pipenv install nose pylint --dev
     - name: Lint with pylint
       run: |
-        pipenv run pylint app
+        pipenv run pylint
     ### TODO - Add a step to launch tests from the tests folder! 
