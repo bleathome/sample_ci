@@ -1,0 +1,24 @@
+name: Python Linter & Tests
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pipenv
+        pipenv --python 3.8
+        pipenv install nose pylint --dev
+    - name: Lint with pylint
+      run: |
+        pipenv run pylint app
+    ### TODO - Add a step to launch tests from the tests folder! 
